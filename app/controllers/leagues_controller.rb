@@ -47,6 +47,10 @@ class LeaguesController < ApplicationController
     redirect_to @league
   end
 
+  def select_player
+    @player = Player.find(params[:id])
+    # @player.update_attributes
+  end
 
   def new
     @league = League.new
