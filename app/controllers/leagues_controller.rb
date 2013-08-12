@@ -24,15 +24,19 @@ class LeaguesController < ApplicationController
 
   #Only appears if they haven't started drafting yet
   def start_draft
-    @league = League.find(params(:id))
+    @league = League.find(params[:id])
     @user = User.all
 
-    set_turn_order
+    @league.set_turn_order
 
-    redirect_to draft_path
+    redirect_to draft_path(@league)
   end
 
   def draft
+    @league = League.find(params[:id])
+    @silver_players = Player.where("pro_club_level = ?", "Silver")
+    @gold_players = Player.where("pro_club_level = ?", "Gold")
+    @platinum_players = Player.where("pro_club_level = ?", "Platinum")
 
   end
 

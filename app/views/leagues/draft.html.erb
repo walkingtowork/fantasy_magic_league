@@ -1,1 +1,20 @@
-Draft Page
+<h2>Draft Page</h2>
+
+<h4>Platinum Players:</h4>
+<% @platinum_players.each do |player| %>
+  <%= "#{player.first_name} #{player.last_name}" %>
+  <br>
+<% end %>
+
+<h4>Gold Players:</h4>
+<% @gold_players.each do |player| %>
+  <%= "#{player.first_name} #{player.last_name}" %>
+  <br>
+<% end %>
+
+<h4>Silver Players:</h4>
+<% @silver_players.each do |player| %>
+  <%= "#{player.first_name} #{player.last_name}" %>
+  <br>
+<% end %>
+

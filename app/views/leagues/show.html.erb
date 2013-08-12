@@ -11,13 +11,13 @@
     <br>
   <% end %>
 </p>
-<% @league.seasons.each do |season| %>
-  <% if season.in_process == false %>
-    <%= link_to "Start Draft", start_draft_path(@league) %>
-  <% else %>
-    <%= link_to "Draft Information", draft_path(@league) %>
-  <% end %>
+
+<% if @league.in_process == false %>
+  <%= link_to "Start Draft", start_draft_path(@league) %>
+<% else %>
+  <%= link_to "Draft Information", draft_path(@league) %>
 <% end %>
+
 
 <%= render "add_user_form" %>
 
