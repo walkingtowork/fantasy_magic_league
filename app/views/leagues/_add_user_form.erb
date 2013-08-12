@@ -1,0 +1,9 @@
+<%= form_tag add_user_path, :method => :put do %>
+  <div class="field">
+    <%= label_tag "Add a user (email) to your league:" %>
+    <%= text_field_tag :email %>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
