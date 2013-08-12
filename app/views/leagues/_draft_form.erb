@@ -1,0 +1,41 @@
+<div class="box" id="platinum">
+  <%= form_tag select_player_path, :method => :put do %>
+    <h4>Platinum Players:</h4>
+      <select name="selected_player">
+        <% @platinum_players.each do |player| %>
+          <option value="<%= player.id %>">
+            <%= "#{player.first_name} #{player.last_name}" %>
+          </option>
+        <% end %>
+      </select>
+    <%= submit_tag "Select Player" %>
+  <% end %>
+</div>
+
+<div class="box" id="gold">
+  <%= form_tag select_player_path, :method => :put do %>
+    <h4>Gold Players:</h4>
+      <select name="selected_player">
+        <% @gold_players.each do |player| %>
+          <option value="<%= player.id %>">
+            <%= "#{player.first_name} #{player.last_name}" %>
+          </option>
+        <% end %>
+      </select>
+    <%= submit_tag "Select Player" %>
+  <% end %>
+</div>
+
+<div class="box" id="silver">
+  <%= form_tag select_player_path, :method => :put do %>
+    <h4>Silver Players:</h4>
+      <select name="selected_player">
+        <% @silver_players.each do |player| %>
+          <option value="<%= player.id %>">
+            <%= "#{player.first_name} #{player.last_name}" %>
+          </option>
+        <% end %>
+      </select>
+    <%= submit_tag "Select Player" %>
+  <% end %>
+</div>

@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :seasons
   has_many :leagues, :through => :seasons
 
+  has_many :teams
+  has_many :players, :through => :teams
+
   authenticates_with_sorcery!
   attr_accessible :username, :email, :password, :password_confirmation, :buy_points, :victory_points
 

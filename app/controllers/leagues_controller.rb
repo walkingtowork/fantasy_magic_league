@@ -1,6 +1,5 @@
 class LeaguesController < ApplicationController
-  # GET /leagues
-  # GET /leagues.json
+
   def index
     @leagues = League.all
 
@@ -10,8 +9,6 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # GET /leagues/1
-  # GET /leagues/1.json
   def show
     @league = League.find(params[:id])
     @user = User.find_by_username(params[:username])
@@ -28,6 +25,9 @@ class LeaguesController < ApplicationController
     @user = User.all
 
     @league.set_turn_order
+    @league.active_user_id = @league.users.where("turn_order = ?", 1).first.id
+    @league.in_process = true
+    @league.save
 
     redirect_to draft_path(@league)
   end
@@ -48,8 +48,17 @@ class LeaguesController < ApplicationController
   end
 
   def select_player
-    @player = Player.find(params[:id])
-    # @player.update_attributes
+    @league = League.find(params[:id])
+    @player = Player.find(params[:selected_player])
+    @user = current_user
+
+    @league.players << @player
+    @user.players << @player
+
+    # increment turn order here
+    @league.increment_turn_order
+
+    redirect_to @league
   end
 
   def new

@@ -1,41 +1,10 @@
 <h2>Draft Page</h2>
-<p>Choose one player:</p>
 
-<div class="box" id="platinum">
-  <%= form_tag select_player_path, :method => :put do %>
-    <h4>Platinum Players:</h4>
-      <select>
-        <% @platinum_players.each do |player| %>
-          <option>
-            <%= "#{player.first_name} #{player.last_name}" %>
-          </option>
-        <% end %>
-      </select>
-    <%= submit_tag "Select Player" %>
-  <% end %>
-</div>
-
-<div class="box" id="gold">
-  <h4>Gold Players:</h4>
-    <select>
-      <% @gold_players.each do |player| %>
-        <option>
-          <%= "#{player.first_name} #{player.last_name}" %>
-        </option>
-      <% end %>
-    </select>
-    <%= submit_tag "Select Player" %>
-</div>
-
-<div class="box" id="silver">
-  <h4>Silver Players:</h4>
-    <select>
-      <% @silver_players.each do |player| %>
-        <option>
-          <%= "#{player.first_name} #{player.last_name}" %>
-        </option>
-      <% end %>
-    </select>
-    <%= submit_tag "Select Player" %>
-</div>
-
+<% if current_user.id == @league.active_user_id %>
+  <div id="player_select">
+    <p>Choose one player:</p>
+    <%= render "draft_form" %>
+  </div>
+<% else %>
+  <div>You are not the current player</div>
+<% end %>
