@@ -15,18 +15,21 @@ class Tournament < ActiveRecord::Base
       @pro_names << full_name
     end
 
-    # Scrapes Tournament for names of all participants
-    tournament_results = self.results_url
-    doc = Nokogiri::HTML(open(tournament_results))
+    # Scrapes Tournament for participant information
+    tournament_url = self.results_url
+    tournament_page = Nokogiri::HTML(open(tournament_url))
 
-    @participant_names = []
-    tournament_results.css('tr').each do |player_row|
+    @tournament_results = {}
+    tournament_page.css('tr').each do |player_row|
       name = player_row.css('td:nth-child(2)').text
-      @participant_names << name
+      rank = player_row.css('td:first-child').text
+      pro_points = player_row.css('td:nth-child(4)').text
+      @tournament_results[name] = [rank, pro_points]
     end
 
+    participant_names = @tournament_results.keys
     # Creates an array of all Players that participated in the tournament
-    @pros_in_tournament = @pro_names - @participant_names
+    @pros_in_tournament = @pro_names - participant_names
 
     # Assigns ranking and pro points to each Player in the tournament
     @pros_in_tournament.each do |player|
