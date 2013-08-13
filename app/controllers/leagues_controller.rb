@@ -1,5 +1,4 @@
 class LeaguesController < ApplicationController
-
   def index
     @leagues = League.all
 
@@ -19,7 +18,15 @@ class LeaguesController < ApplicationController
     end
   end
 
-  #Only appears if they haven't started drafting yet
+  # Adds a User to the league
+  def add_user
+    @league = League.find(params[:id])
+    @user = User.find_by_email(params[:email])
+    @league.users << @user
+    redirect_to @league
+  end
+
+  # Option only appears if league hasn't started drafting yet
   def start_draft
     @league = League.find(params[:id])
     @user = User.all
@@ -32,31 +39,37 @@ class LeaguesController < ApplicationController
     redirect_to draft_path(@league)
   end
 
+  # Populates the draft page
   def draft
     @league = League.find(params[:id])
-    @silver_players = Player.where("pro_club_level = ?", "Silver")
-    @gold_players = Player.where("pro_club_level = ?", "Gold")
-    @platinum_players = Player.where("pro_club_level = ?", "Platinum")
 
+    # All Players
+    platinum_players = Player.where("pro_club_level = ?", "Platinum")
+    gold_players = Player.where("pro_club_level = ?", "Gold")
+    silver_players = Player.where("pro_club_level = ?", "Silver")
+
+    # Players that have already been drafted
+    selected_players = @league.players
+
+    # Remaining players at each pro level
+    @remaining_platinum_players = platinum_players - selected_players
+    @remaining_gold_players = gold_players - selected_players
+    @remaining_silver_players = silver_players - selected_players
   end
 
-  def add_user
-    @league = League.find(params[:id])
-    @user = User.find_by_email(params[:email])
-    @league.users << @user
-    redirect_to @league
-  end
-
+  # Controls the drafting-player action
   def select_player
     @league = League.find(params[:id])
     @player = Player.find(params[:selected_player])
     @user = current_user
 
+    # Adds the player to the league
+    # Adds the player to the User's Team
     @league.players << @player
     @user.players << @player
 
-    # increment turn order here
-    # active user changes
+    # Increment turn order here
+    # Active user changes
     @league.active_user_id = @league.increment_turn_order(current_user)
     @league.save
     redirect_to @league
@@ -71,13 +84,10 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # GET /leagues/1/edit
   def edit
     @league = League.find(params[:id])
   end
 
-  # POST /leagues
-  # POST /leagues.json
   def create
     @league = League.new(params[:league])
 
@@ -95,8 +105,6 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # PUT /leagues/1
-  # PUT /leagues/1.json
   def update
     @league = League.find(params[:id])
 
@@ -111,8 +119,6 @@ class LeaguesController < ApplicationController
     end
   end
 
-  # DELETE /leagues/1
-  # DELETE /leagues/1.json
   def destroy
     @league = League.find(params[:id])
     @league.destroy

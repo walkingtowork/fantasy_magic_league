@@ -2,7 +2,7 @@
   <%= form_tag select_player_path, :method => :put do %>
     <h4>Platinum Players:</h4>
       <select name="selected_player">
-        <% @platinum_players.each do |player| %>
+        <% @remaining_platinum_players.each do |player| %>
           <option value="<%= player.id %>">
             <%= "#{player.first_name} #{player.last_name}" %>
           </option>
@@ -16,7 +16,7 @@
   <%= form_tag select_player_path, :method => :put do %>
     <h4>Gold Players:</h4>
       <select name="selected_player">
-        <% @gold_players.each do |player| %>
+        <% @remaining_gold_players.each do |player| %>
           <option value="<%= player.id %>">
             <%= "#{player.first_name} #{player.last_name}" %>
           </option>
@@ -30,7 +30,7 @@
   <%= form_tag select_player_path, :method => :put do %>
     <h4>Silver Players:</h4>
       <select name="selected_player">
-        <% @silver_players.each do |player| %>
+        <% @remaining_silver_players.each do |player| %>
           <option value="<%= player.id %>">
             <%= "#{player.first_name} #{player.last_name}" %>
           </option>
