@@ -6,5 +6,9 @@
     <%= render "draft_form" %>
   </div>
 <% else %>
-  <div>You are not the current player</div>
+  <p>It is not your turn to draft</p>
 <% end %>
+<div id="draft_info">
+  <h2>Already Drafted</h2>
+  <%= render "draft_status" %>
+</div>

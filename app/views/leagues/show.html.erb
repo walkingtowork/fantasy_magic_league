@@ -12,14 +12,22 @@
   <% end %>
 </p>
 
-<% if @league.in_process == false %>
-  <%= link_to "Start Draft", start_draft_path(@league) %>
-<% else %>
-  <%= link_to "Draft Information", draft_path(@league) %>
-<% end %>
+<div id="view_draft">
+  <% if @league.in_process == false %>
+    <div id="start_draft">
+      <%= link_to "Start Draft", start_draft_path(@league) %>
+    </div>
+  <% else %>
+    <div id="draft_info">
+      <%= link_to "Draft Information", draft_path(@league) %>
+    </div>
+  <% end %>
+</div>
 
-
-<%= render "add_user_form" %>
+<div id="invite">
+  <p>Invite a friend to join!</p>
+  <%= render "add_user_form" %>
+</div>
 
 <%= link_to 'Edit', edit_league_path(@league) %> |
 <%= link_to 'Back', leagues_path %>
