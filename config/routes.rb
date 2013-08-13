@@ -1,6 +1,10 @@
 FantasyMagicLeague::Application.routes.draw do
   get "home/index"
 
+  get "tournaments" => 'tournaments#index', :as => :tournaments
+  get "tournaments/new" => 'tournaments#new', :as => :new_tournament
+  post "tournaments/create" => 'tournaments#create'
+
   resources :players
 
   get "leagues/:id/start_draft" => 'leagues#start_draft', :as => :start_draft
@@ -9,10 +13,12 @@ FantasyMagicLeague::Application.routes.draw do
   put "leagues/:id/select_player" => 'leagues#select_player', :as => :select_player
   resources :leagues
 
-  root :to => 'home#index'
-  resources :user_sessions
+
   resources :users
+  resources :user_sessions
 
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+
+  root :to => 'home#index'
 end

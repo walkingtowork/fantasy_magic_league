@@ -1,0 +1,8 @@
+<p>Tournament Index</p>
+<ul>
+<% @tournaments.each do |tournament| %>
+  <li>
+    <%= tournament.tournament_type %>
+    <%= tournament.location %>
+  </li>
+</ul>

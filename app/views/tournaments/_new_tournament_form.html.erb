@@ -1,0 +1,34 @@
+<%= form_for(@tournament) do |f| %>
+  <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+
+      <ul>
+      <% @tournament.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tournament_type %><br />
+    <%= f.select :tournament_type, ["Pro Tour", "Grand Prix", "World Championships"] %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br/>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :results_url %><br/>
+    <%= f.text_field :results_url %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
