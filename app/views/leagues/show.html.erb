@@ -1,19 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @league.name %>
-  <br>
-  <b>Members:</b>
-  <br>
-  <% @league.users.each do |user| %>
-    <%= user.username %>
-    <br>
-  <% end %>
-</p>
-
 <div id="view_draft">
-  <% if @league.in_process == false %>
+  <% if @league.in_process == false && @league.admin_id == current_user.id %>
     <div id="start_draft">
       <%= link_to "Start Draft", start_draft_path(@league) %>
     </div>
@@ -24,10 +12,30 @@
   <% end %>
 </div>
 
+<div id="league_info">
+  <p>
+    <b>Name:</b>
+    <%= @league.name %>
+    <br>
+    <b>Members:</b>
+    <br>
+    <% @league.users.each do |user| %>
+      <%= user.username %>
+      <br>
+    <% end %>
+  </p>
+</div>
+
+
 <div id="invite">
   <p>Invite a friend to join!</p>
   <%= render "add_user_form" %>
 </div>
 
-<%= link_to 'Edit', edit_league_path(@league) %> |
-<%= link_to 'Back', leagues_path %>
+<div class="links">
+  <% if current_user.id == @league.admin_id %>
+    <%= link_to 'Edit', edit_league_path(@league) %> |
+  <% end %>
+
+  <%= link_to 'Back', leagues_path %>
+</div>
