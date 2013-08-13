@@ -15,7 +15,20 @@ class League < ActiveRecord::Base
     end
   end
 
-  def increment_turn_order
+  def increment_turn_order(previous_user)
+    next_user = previous_user.turn_order + 1
+    next_users = self.users.where("turn_order = ?", next_user)
+    if next_users.length == 0
+      num_turns = self.seasons.length
+      self.seasons.sort_by(&:turn_order).each do |season|
+        season.turn_order = num_turns
+        season.save
+        num_turns -= 1
+      end
+      return self.users.where("turn_order = ?", 1).first.id
+    else
+      return next_users.first.id
+    end
   end
 
 end

@@ -56,7 +56,8 @@ class LeaguesController < ApplicationController
     @user.players << @player
 
     # increment turn order here
-    @league.increment_turn_order
+    # active user changes
+    @league.active_user_id = @league.increment_turn_order(current_user)
 
     redirect_to @league
   end
