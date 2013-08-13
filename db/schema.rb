@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812191941) do
+ActiveRecord::Schema.define(:version => 20130813020713) do
 
   create_table "league_player_joins", :force => true do |t|
     t.integer  "player_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130812191941) do
     t.datetime "updated_at",                        :null => false
     t.integer  "active_user_id"
     t.boolean  "in_process",     :default => false
+    t.boolean  "increment_up",   :default => true
   end
 
   create_table "leagues_players", :force => true do |t|
