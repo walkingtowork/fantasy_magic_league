@@ -10,6 +10,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(params[:tournament])
 
+
     if @tournament.save
       redirect_to tournaments_path
     else
