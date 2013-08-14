@@ -1,4 +1,4 @@
-class PlayerStandings < ActiveRecord::Base
+class PlayerStanding < ActiveRecord::Base
   belongs_to :player
   belongs_to :tournament
 

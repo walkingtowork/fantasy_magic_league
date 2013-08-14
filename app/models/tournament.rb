@@ -1,11 +1,13 @@
+require "open-uri"
+
 class Tournament < ActiveRecord::Base
   has_many :player_standings
   has_many :players, :through => :player_standings
 
   attr_accessible :date, :location, :tournament_type, :results_url
 
-  # Checks for a Pro's appearance at a tournament
-  def player_check
+  # Checks for a Player's appearance at a Tournament and updates his/her information
+  def update_player_info
     # Gets the names of each Player, merges First and Last into one string, pushes them into an array
     pro_players = Player.all
     @pro_names = []
@@ -27,15 +29,24 @@ class Tournament < ActiveRecord::Base
       @tournament_results[name] = [rank, pro_points]
     end
 
+    # Creates an array of all Players' names that participated in the Tournament
     participant_names = @tournament_results.keys
-    # Creates an array of all Players that participated in the tournament
-    @pros_in_tournament = @pro_names - participant_names
+    pros_in_tournament = @pro_names - participant_names
 
-    # Assigns ranking and pro points to each Player in the tournament
-    @pros_in_tournament.each do |player|
+    pros_in_tournament.each do
+
+    # Associates participating Players with the Tournament
+    pros_in_tournament.each do |player|
+      playerObject = Player.where("fn = ? AND ln = ?", fn, ln)
+      self.players << player
+    end
+
+    # Assigns ranking and pro points to each Player in the Tournament
+    pros_in_tournament.each do |player|
       pro = player.player_standings.find_by_tournament_id(id)
-      pro.ranking = scrape
-      pro.pro_points_earned = scrape
+      pro.ranking = @tournament_results[player][0]
+      pro.pro_points_earned = @tournament_resuts[player][1]
+      pro.save
     end
   end
 end

@@ -3,7 +3,7 @@ FantasyMagicLeague::Application.routes.draw do
 
   get "tournaments" => 'tournaments#index', :as => :tournaments
   get "tournaments/new" => 'tournaments#new', :as => :new_tournament
-  post "tournaments/create" => 'tournaments#create'
+  post "tournaments" => 'tournaments#create'
 
   resources :players
 
