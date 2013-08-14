@@ -22,8 +22,16 @@ class LeaguesController < ApplicationController
   def add_user
     @league = League.find(params[:id])
     @user = User.find_by_email(params[:email])
-    @league.users << @user
-    redirect_to @league
+    # Check to see if User exists
+    if @user == nil
+      # redirect_to @league, notice: 'Could not find that User.'
+      respond_to do |format|
+        format.js
+      end
+    else
+      @league.users << @user
+      redirect_to @league
+    end
   end
 
   # Option only appears if league hasn't started drafting yet

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div id="js_notice"></div>
 
 <div id="view_draft">
   <% if @league.in_process == false && @league.admin_id == current_user.id %>
@@ -21,6 +21,11 @@
     <br>
     <% @league.users.each do |user| %>
       <%= user.username %>
+      <ul>
+        <% user.players.each do |player| %>
+          <li><%= player.full_name %></li>
+        <% end %>
+      </ul>
       <br>
     <% end %>
   </p>

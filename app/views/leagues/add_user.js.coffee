@@ -1,0 +1,1 @@
+$('#js_notice').empty().show().html('<%= j render "static_pages/add_user_to_league_error" %>')

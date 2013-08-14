@@ -1,4 +1,13 @@
 <h1>Fantasy Magic League</h1>
-<%= link_to "Players", players_path %>
-<%= link_to "Users", users_path %>
-<%= link_to "Leagues", leagues_path %>
+
+
+<h2>Your leagues</h2>
+<% current_user.leagues.each do |league| %>
+  <%= link_to league.name, league %>
+  <br/>
+<% end %>
+
+
+<%= link_to "All Players", players_path %>
+<%= link_to "All Users", users_path %>
+<%= link_to "All Leagues", leagues_path %>
