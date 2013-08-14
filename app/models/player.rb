@@ -9,5 +9,5 @@ class Player < ActiveRecord::Base
   has_many :tournaments, :through => :player_standings
 
 
-  attr_accessible :first_name, :last_name, :nationality, :pro_club_level
+  attr_accessible :first_name, :last_name, :nationality, :pro_club_level, :full_name
 end
