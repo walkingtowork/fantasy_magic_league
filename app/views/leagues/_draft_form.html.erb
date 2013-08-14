@@ -1,3 +1,8 @@
+<%= render "draft_box", :players => @remaining_platinum_players, :idstring => "platinum_box" %>
+<%= render "draft_box", :players => @remaining_gold_players, :idstring => "gold_box" %>
+<%= render "draft_box", :players => @remaining_silver_players, :idstring => "silver_box" %>
+
+
 <div class="draft_pick" id="platinum">
   <%= form_tag select_player_path, :method => :put do %>
     <h4>Platinum Players:</h4>
