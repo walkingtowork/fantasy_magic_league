@@ -54,10 +54,8 @@ class League < ActiveRecord::Base
       if user.players.include? Player.find(@tournament_champion.id)
         @winner = user
         @winner.save
-        return @winner
-        binding.pry
       end
-      binding.pry
     end
+  return @winner
   end
 end
