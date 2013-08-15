@@ -1,4 +1,4 @@
-<h1>Listing leagues</h1>
+<h1>League Listing</h1>
 
 <table>
   <tr>
@@ -11,9 +11,9 @@
 <% @leagues.each do |league| %>
   <tr>
     <td><%= league.name %></td>
-    <td><%= link_to 'Show', league %></td>
-    <td><%= link_to 'Edit', edit_league_path(league) %></td>
-    <td><%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'View', league %></td>
+    <td><%#= link_to 'Edit', edit_league_path(league) %></td>
+    <td><%#= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

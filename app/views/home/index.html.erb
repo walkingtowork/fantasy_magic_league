@@ -1,15 +1,21 @@
-<h1>Fantasy Magic League</h1>
+<div id="hero_unit">
+  <h1>Like Magic: the Gathering?</h1>
+  <h2>Enjoy Drafting With Friends?</h2>
+  <h3>So Draft The Pro Tour!</h3>
+</div>
 
-
-<h2>Your leagues</h2>
-<% if current_user.present? %>
-  <% current_user.leagues.each do |league| %>
-    <%= link_to league.name, league %>
-    <br/>
+<div id="league_unit">
+  <h2>Your leagues</h2>
+  <% if current_user.present? %>
+    <% current_user.leagues.each do |league| %>
+      <%= link_to league.name, league %>
+      <br/>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
+<div class="links">
+  <%= link_to "All Leagues", leagues_path %>
+  <%= link_to "All Pro Players", players_path %>
+</div>
 
-<%= link_to "All Players", players_path %>
-<%= link_to "All Users", users_path %>
-<%= link_to "All Leagues", leagues_path %>

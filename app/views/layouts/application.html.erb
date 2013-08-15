@@ -13,10 +13,20 @@
       <%= link_to "Fantasy Magic League", root_path %>
     </div>
 
+    <div id="color_pie">
+      <div id="white"></div>
+      <div id="blue"></div>
+      <div id="black"></div>
+      <div id="red"></div>
+      <div id="green"></div>
+    </div>
+
     <div id="user_controls">
       <% if current_user %>
+        <% if current_user.id == 1 %>
+          <%= link_to "Add Tournament", new_tournament_path %>
+        <% end %>
         <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Add Tournament", new_tournament_path %>
         <%= link_to "Logout", :logout %>
         <br>
         Logged in as <%= current_user.username %>

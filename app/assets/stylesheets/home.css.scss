@@ -3,6 +3,67 @@
   color: white;
   height: 50px;
 }
+
+#site_name {
+  margin-top: 14px;
+  margin-left: 16px;
+  float: left;
+}
+
+#color_pie {
+  width: 200px;
+  height: 40px;
+  float: left;
+  margin-left: 20%;
+  margin-top: 10px;
+}
+
+#white {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  margin: 5px;
+  float: left;
+}
+
+#blue {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  margin: 5px;
+  float: left;
+}
+
+#black {
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+  background-color: black;
+  border: 1px solid grey;
+  margin: 5px;
+  float: left;
+}
+
+#red {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  margin: 5px;
+  float: left;
+}
+
+#green {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  margin: 5px;
+  float: left;
+}
+
 #nav a {
   color: white;
 }
@@ -18,4 +79,19 @@
 
 #user_controls {
   float: right;
+}
+
+#hero_unit {
+  height: 150px;
+  padding-top: 30px;
+  text-align: center;
+}
+
+#league_unit {
+  text-align: center;
+}
+
+.links {
+  margin-top: 50px;
+  text-align: center;
 }
