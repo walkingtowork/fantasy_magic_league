@@ -44,7 +44,7 @@ class LeaguesController < ApplicationController
     @league.in_process = true
     @league.save
 
-    redirect_to draft_path(@league)
+    redirect_to @league
   end
 
   # Populates the draft page
