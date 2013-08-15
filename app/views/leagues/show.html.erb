@@ -13,6 +13,9 @@
   <div class="info_box" id="admin_links">
     <% if @league.admin_id == current_user.id %>
     <h3>Admin Links:</h3>
+      <div id="determine_winner">
+        <%= link_to 'Determine Winner', determine_winner_path(@league), :remote => true %>
+      </div>
       <div id="edit_league">
         <%= link_to 'Edit', edit_league_path(@league) %>
       </div>

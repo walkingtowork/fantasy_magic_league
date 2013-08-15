@@ -93,6 +93,20 @@ class LeaguesController < ApplicationController
     redirect_to draft_path(@league)
   end
 
+  # Determines winner of the League
+  def determine_winner
+    @league = League.find(params[:id])
+
+    @league.find_winner
+    binding.pry
+    if @winner != nil
+      binding.pry
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   def new
     @league = League.new
 

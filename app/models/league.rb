@@ -38,4 +38,26 @@ class League < ActiveRecord::Base
       end
     end
   end
+
+  # Finds the winner of the League
+  def find_winner
+    # Searches for Player that won most recent Tournament
+    @players = Player.all
+    @players.each do |player|
+      if player.id == Player.find(player.id).tournaments.last.player_standings.sort { |a,b| a.ranking <=> b.ranking }.first.player_id
+        @tournament_champion = player
+      end
+    end
+    #Searches League for User with winning Player on their team
+    @users = self.users
+    @users.each do |user|
+      if user.players.include? Player.find(@tournament_champion.id)
+        @winner = user
+        @winner.save
+        return @winner
+        binding.pry
+      end
+      binding.pry
+    end
+  end
 end
