@@ -2,25 +2,64 @@
   display: none;
 }
 
-#view_draft {
-  border: 1px solid black;
-  font-size: 16px;
-  #start_draft{
+#start_draft{
 
-  }
-  #draft_info{
-
-  }
 }
 
 #league_info {
-  border: 1px solid black;
+  height: 140px;
+}
+
+.info_box {
+  float: left;
+  margin-left: 7%;
+  margin-right: 5%;
+  width: 250px;
+  height: 130px;
+}
+
+#league_name {
+  // border: 1px solid black;
+  font-size: 30px;
+  height: 80px;
+  padding-top: 50px;
 }
 
 #invite {
+  // border: 1px solid red;
+  text-align: center;
+}
+
+#admin_links {
+  // border: 1px solid blue;
+  text-align: right;
+}
+
+#view_draft {
+
+}
+
+#draft_info{
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user_box {
   border: 1px solid black;
+  height: 300px;
+  width: 200px;
+  margin: 20px;
+  float: left;
 }
 
-#draft_info {
-
+#active_user {
+  background-color: red;
 }
+
+
+
+
+
+

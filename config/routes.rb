@@ -8,6 +8,7 @@ FantasyMagicLeague::Application.routes.draw do
   resources :players
 
   get "leagues/:id/start_draft" => 'leagues#start_draft', :as => :start_draft
+  get "leagues/:id/end_draft" => 'leagues#end_draft', :as => :end_draft
   get "leagues/:id/draft" => 'leagues#draft', :as => :draft
   put "leagues/:id/add_user" => 'leagues#add_user', :as => :add_user
   put "leagues/:id/select_player" => 'leagues#select_player', :as => :select_player

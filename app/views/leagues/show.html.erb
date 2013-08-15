@@ -1,46 +1,72 @@
 <div id="js_notice"></div>
-<div id="greeting"><%= current_user.username %></div>
-<div id="view_draft">
-  <% if @league.in_process == false && @league.admin_id == current_user.id %>
-    <div id="start_draft">
-      <%= link_to "Start Draft", start_draft_path(@league) %>
-    </div>
-  <% else %>
-    <div id="draft_info">
-      <%= link_to "Draft Information", draft_path(@league) %>
-    </div>
+<div id="greeting">
+  <% if current_user.id == @league.active_user_id %>
+    <h3>It is your turn to draft!</h3>
   <% end %>
 </div>
 
 <div id="league_info">
-  <p>
-    <b>Name:</b>
+  <div class="info_box" id="league_name">
     <%= @league.name %>
-    <br>
+  </div>
+
+  <div class="info_box" id="invite">
+    <p>Invite a friend to join!</p>
+    <%= render "add_user_form" %>
+  </div>
+
+  <div class="info_box" id="admin_links">
+    <h3>Admin Links:</h3>
+    <% if @league.admin_id == current_user.id %>
+      <div id="edit_league">
+        <%= link_to 'Edit', edit_league_path(@league) %>
+      </div>
+      <% if @league.in_process == false %>
+        <div id="start_draft">
+          <%= link_to "Start Draft", start_draft_path(@league) %>
+        </div>
+      <% else %>
+        <div id="end_draft">
+          <%= link_to "End Draft", end_draft_path(@league) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div id="view_draft">
+  <% if @league.in_process == true %>
+    <div id="draft_info">
+      <%= link_to "Draft!", draft_path(@league) %>
+    </div>
+  <% end %>
+</div>
+
+<div id="member_info">
     <b>Members:</b>
     <br>
     <% @league.users.each do |user| %>
-      <%= user.username %>
-      <ul>
-        <% user.players.reverse.each do |player| %>
-          <li><%= player.full_name %></li>
-        <% end %>
-      </ul>
-      <br>
+      <% if user.id == @league.active_user_id %>
+        <div class="user_box" id="active_user">
+          <%= user.username %>
+          <ul>
+            <% user.players.reverse.each do |player| %>
+              <li><%= player.full_name %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        <div class="user_box">
+          <%= user.username %>
+          <ul>
+            <% user.players.reverse.each do |player| %>
+              <li><%= player.full_name %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
   </p>
 </div>
 
 
-<div id="invite">
-  <p>Invite a friend to join!</p>
-  <%= render "add_user_form" %>
-</div>
-
-<div class="links">
-  <% if current_user.id == @league.admin_id %>
-    <%= link_to 'Edit', edit_league_path(@league) %> |
-  <% end %>
-
-  <%= link_to 'Back', leagues_path %>
-</div>

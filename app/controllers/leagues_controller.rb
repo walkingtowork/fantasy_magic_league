@@ -83,6 +83,16 @@ class LeaguesController < ApplicationController
     redirect_to @league
   end
 
+  # Ends the draft
+  def end_draft
+    @league = League.find(params[:id])
+
+    @league.in_process = false
+    @league.save
+
+    redirect_to draft_path(@league)
+  end
+
   def new
     @league = League.new
 
