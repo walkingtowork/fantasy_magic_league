@@ -5,8 +5,9 @@
   <div class="box_close">&times;</div>
   <div class="draft_pick">
     <%= form_tag select_player_path, :method => :put do %>
+      <input class="hidden_player_id" name="selected_player" value="" type="hidden" >
       <% players.each do |player| %>
-        <div class="player_box" id="<%"player_#{player.id}"%>">
+        <div class="player_box" id="<%= player.id %>">
           <div class="picture_box">
           </div>
           <div class="text_box">

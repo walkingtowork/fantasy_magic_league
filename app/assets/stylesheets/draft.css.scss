@@ -24,7 +24,9 @@
 .box_close {
   color: white;
   font-size: 30px;
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 20px;
   padding: 5px;
 }
@@ -38,34 +40,42 @@
 }
 
 .player_box {
-  color: white;
+  color: black;
   height: 120px;
   width: 80px;
-  border: 1px solid white;
+  // border: 1px solid white;
   border-radius: 5px;
   float: left;
   margin: 10px;
   padding: 5px;
-  background: black;
+  background: #07427e;
+  border:10px solid black;
 }
-
+.player_box:hover {
+  border:10px solid red;
+}
 .picture_box {
-  height: 50px;
+  height: 55px;
   width: 78px;
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 5px;
+  background: white;
 }
 
 .text_box {
   height: 50px;
   width: 70px;
-  border: 1px solid white;
+  border: 1px solid black;
+  background: white;
   border-radius: 5px;
   margin-top: 5px;
   padding: 4px;
+  overflow: hidden;
 }
 
-
+.selected {
+  border: 1px solid red;
+}
 
 
 

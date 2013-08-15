@@ -44,3 +44,13 @@
     <%= submit_tag "Select Player" %>
   <% end %>
 </div>
+
+<script>
+$('.player_box').click(function() {
+  var player_box = $(this);
+  var form = player_box.closest('form');
+  var player_id = player_box.attr('id');
+  form.find('.hidden_player_id').val(player_id);
+  form.trigger('submit');
+})
+</script>
