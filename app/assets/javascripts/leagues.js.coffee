@@ -6,3 +6,5 @@ jQuery ->
 
   $(".box_close").on 'click', ->
     $('.draft_box').hide()
+
+  $(".player_box").on 'click', ->
