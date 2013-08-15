@@ -1,29 +1,31 @@
-<h1>Pro Player List</h1>
+<div id="pro_listing">
+  <h1>Pro Player List</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Nationality</th>
-    <th>Pro club level</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Nationality</th>
+      <th>Pro club level</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @players.each do |player| %>
-  <tr>
-    <td><%= player.first_name %></td>
-    <td><%= player.last_name %></td>
-    <td><%= player.nationality %></td>
-    <td><%= player.pro_club_level %></td>
-    <td><%#= link_to 'Show', player %></td>
-    <td><%#= link_to 'Edit', edit_player_path(player) %></td>
-    <td><%#= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.first_name %></td>
+      <td><%= player.last_name %></td>
+      <td><%= player.nationality %></td>
+      <td><%= player.pro_club_level %></td>
+      <td><%#= link_to 'Show', player %></td>
+      <td><%#= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%#= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Player', new_player_path %>
+  <%= link_to 'New Player', new_player_path %>
+</div>
