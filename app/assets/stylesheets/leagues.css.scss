@@ -2,6 +2,11 @@
   display: none;
 }
 
+#draft_prompt {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 #start_draft{
 
 }
@@ -21,8 +26,7 @@
 #league_name {
   // border: 1px solid black;
   font-size: 30px;
-  height: 80px;
-  padding-top: 50px;
+  line-height: 40px;
 }
 
 #invite {
@@ -41,24 +45,44 @@
 
 #draft_info{
   font-size: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  line-height: 52px;
+  margin: 10px auto;
   text-align: center;
+  // border: 1px solid black;
+  // border-radius: 5px;
+  width: 150px;
+  height: 60px;
+}
+
+#member_info {
+  margin-left: 6%;
+}
+
+#member_line {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: -10px;
+  font-size: 20px;
 }
 
 .user_box {
   border: 1px solid black;
-  height: 300px;
+  border-radius: 5px;
+  height: 280px;
   width: 200px;
   margin: 20px;
+  padding: 10px;
   float: left;
 }
 
-#active_user {
-  background-color: red;
+.username {
+  text-align: center;
+  margin-top: -1px;
 }
 
-
+#active_user {
+  background-color: #9df58e;
+}
 
 
 

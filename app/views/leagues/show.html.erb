@@ -1,9 +1,4 @@
 <div id="js_notice"></div>
-<div id="greeting">
-  <% if current_user.id == @league.active_user_id %>
-    <h3>It is your turn to draft!</h3>
-  <% end %>
-</div>
 
 <div id="league_info">
   <div class="info_box" id="league_name">
@@ -16,8 +11,8 @@
   </div>
 
   <div class="info_box" id="admin_links">
-    <h3>Admin Links:</h3>
     <% if @league.admin_id == current_user.id %>
+    <h3>Admin Links:</h3>
       <div id="edit_league">
         <%= link_to 'Edit', edit_league_path(@league) %>
       </div>
@@ -30,8 +25,16 @@
           <%= link_to "End Draft", end_draft_path(@league) %>
         </div>
       <% end %>
+    <% else %>
+      <!-- Some image here? -->
     <% end %>
   </div>
+</div>
+
+<div id="draft_prompt">
+  <% if current_user.id == @league.active_user_id %>
+    <h3>It is your turn to draft!</h3>
+  <% end %>
 </div>
 
 <div id="view_draft">
@@ -42,13 +45,16 @@
   <% end %>
 </div>
 
+<p id="member_line">Members:</p>
 <div id="member_info">
-    <b>Members:</b>
-    <br>
     <% @league.users.each do |user| %>
       <% if user.id == @league.active_user_id %>
         <div class="user_box" id="active_user">
-          <%= user.username %>
+          <h3 class="username">
+            <%= user.username %>
+            <br/>
+            _____________
+          </h3>
           <ul>
             <% user.players.reverse.each do |player| %>
               <li><%= player.full_name %></li>
@@ -57,7 +63,11 @@
         </div>
       <% else %>
         <div class="user_box">
-          <%= user.username %>
+          <h3 class="username">
+            <%= user.username %>
+            <br/>
+            _____________
+          </h3>
           <ul>
             <% user.players.reverse.each do |player| %>
               <li><%= player.full_name %></li>
