@@ -97,10 +97,8 @@ class LeaguesController < ApplicationController
   def determine_winner
     @league = League.find(params[:id])
 
-    @league.find_winner
-    binding.pry
+    @winner = @league.find_winner
     if @winner != nil
-      binding.pry
       respond_to do |format|
         format.js
       end
