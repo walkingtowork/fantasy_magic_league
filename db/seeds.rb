@@ -32,7 +32,7 @@ end
 # Sample Users
 @users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
 def make_users
-  users.each do |user|
+  @users.each do |user|
     User.create(
       :username => user,
       :email => "#{user}@#{user}.com",
@@ -48,7 +48,6 @@ def draft_players
   competitors.each_with_index do |competitor, index|
     if index < @users.length
       draft_pick = Player.find_by_full_name(competitor)
-      binding.pry
       user = @test.users.where("username = ? ", @users[index]).first
       if draft_pick != nil
         user.players << draft_pick
