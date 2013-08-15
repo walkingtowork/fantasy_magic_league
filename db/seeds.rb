@@ -25,13 +25,23 @@ def make_players(website)
 end
 
 # Creating Sample Data
+
+# Sample Users
+@alex = User.create(
+      :username => user,
+      :email => "#{user}@#{user}.com",
+      :password => "password",
+      :password_confirmation => "password"
+      )
 # Sample League
 @test = League.create(
   :name => "Sample League",
-  :admin_id => 1
+  :admin_id => @alex.id
   )
-# Sample Users
-@users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
+
+@test.users << @alex
+
+@users = ["erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
 def make_users
   @users.each do |user|
     new_user = User.create(
