@@ -28,7 +28,7 @@ end
 
 # Sample Users
 @alex = User.create(
-      :username => alex,
+      :username => "alex",
       :email => "alex@alex.com",
       :password => "password",
       :password_confirmation => "password"
