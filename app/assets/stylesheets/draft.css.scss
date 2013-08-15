@@ -1,3 +1,52 @@
+h2 {
+  text-align: center;
+  margin-left: -80px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+#draft_buttons {
+  margin: 20px auto;
+  height: 150px;
+  width: 1000px;
+}
+
+.draft_button {
+  border: 1px solid black;
+  border-radius: 5px;
+  float: left;
+  padding: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 200px;
+  text-align: center;
+}
+
+.draft_button#platinum {
+  background-color: #eeece7;
+  background-image: url("platinum.png");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+
+}
+
+.draft_button#gold {
+  background-color: #b89242;
+  background-image: url("gold.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.draft_button#silver {
+  background-color: #bfbfbf;
+  background-image: url("silver.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
 .draft_box {
   height: 400px;
   width: 700px;
@@ -10,8 +59,7 @@
   color: white;
   overflow: auto;
 
-  // margin: 0 auto;
-  left: 15%;
+  left: 20%;
 }
 
 .box_title {
@@ -32,7 +80,6 @@
 }
 
 .draft_pick {
-  border: 1px solid black;
   float: left;
   padding: 10px;
   margin-left: 40px;
@@ -43,6 +90,7 @@
   color: black;
   height: 120px;
   width: 80px;
+  text-align: center;
   // border: 1px solid white;
   border-radius: 5px;
   float: left;
@@ -81,7 +129,10 @@
   border: 1px solid red;
 }
 
-
+#draft_status {
+  padding: 50px;
+  width: 800px;
+}
 
 
 

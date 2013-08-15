@@ -2,47 +2,18 @@
 <%= render "draft_box", :players => @remaining_gold_players, :idstring => "gold_box", :typestring => "Gold" %>
 <%= render "draft_box", :players => @remaining_silver_players, :idstring => "silver_box", :typestring => "Silver" %>
 
+<div id="draft_buttons">
+  <div class="draft_button" id="platinum">
+    <h4>Platinum Players</h4>
+  </div>
 
-<div class="draft_pick" id="platinum">
-  <%= form_tag select_player_path, :method => :put do %>
-    <h4>Platinum Players:</h4>
-      <select name="selected_player">
-        <% @remaining_platinum_players.each do |player| %>
-          <option value="<%= player.id %>">
-            <%= "#{player.first_name} #{player.last_name}" %>
-          </option>
-        <% end %>
-      </select>
-    <%= submit_tag "Select Player" %>
-  <% end %>
-</div>
+  <div class="draft_button" id="gold">
+    <h4>Gold Players</h4>
+  </div>
 
-<div class="draft_pick" id="gold">
-  <%= form_tag select_player_path, :method => :put do %>
-    <h4>Gold Players:</h4>
-      <select name="selected_player">
-        <% @remaining_gold_players.each do |player| %>
-          <option value="<%= player.id %>">
-            <%= "#{player.first_name} #{player.last_name}" %>
-          </option>
-        <% end %>
-      </select>
-    <%= submit_tag "Select Player" %>
-  <% end %>
-</div>
-
-<div class="draft_pick" id="silver">
-  <%= form_tag select_player_path, :method => :put do %>
-    <h4>Silver Players:</h4>
-      <select name="selected_player">
-        <% @remaining_silver_players.each do |player| %>
-          <option value="<%= player.id %>">
-            <%= "#{player.first_name} #{player.last_name}" %>
-          </option>
-        <% end %>
-      </select>
-    <%= submit_tag "Select Player" %>
-  <% end %>
+  <div class="draft_button" id="silver">
+    <h4>Silver Players</h4>
+  </div>
 </div>
 
 <script>

@@ -1,7 +1,7 @@
 jQuery ->
-  draft_pick = $(".draft_pick")
+  draft_button = $(".draft_button")
 
-  show_box = draft_pick.on 'click', ->
+  show_box = draft_button.on 'click', ->
     $('#'+$(this).attr('id')+'_box').show()
 
   $(".box_close").on 'click', ->

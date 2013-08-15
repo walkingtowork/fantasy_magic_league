@@ -1,15 +1,12 @@
-<h2>Draft Page</h2>
+<h2>Select One</h2>
 
 <% if current_user.id == @league.active_user_id %>
   <div id="player_select">
-    <p>Select One:</p>
     <%= render "draft_form" %>
-
   </div>
 <% else %>
   <p>It is not your turn to draft</p>
 <% end %>
-<div id="draft_info">
-  <h2>Already Drafted</h2>
+<div id="draft_status">
   <%= render "draft_status" %>
 </div>
