@@ -59,14 +59,18 @@
   width: 78px;
   border: 1px solid black;
   border-radius: 5px;
-  background: white;
+  // background: white;
+  background-image: url("http://www.wizards.com/mtg/images/daily/wallpapers/WP_JacetheMindSculptor_1024x768.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
 }
 
 .text_box {
   height: 50px;
   width: 70px;
   border: 1px solid black;
-  background: white;
+  background: #d7dee4;
   border-radius: 5px;
   margin-top: 5px;
   padding: 4px;

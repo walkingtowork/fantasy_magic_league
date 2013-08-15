@@ -2,10 +2,12 @@
 
 
 <h2>Your leagues</h2>
-<%# current_user.leagues.each do |league| %>
-  <%#= link_to league.name, league %>
-  <br/>
-<%# end %>
+<% if current_user.present? %>
+  <% current_user.leagues.each do |league| %>
+    <%= link_to league.name, league %>
+    <br/>
+  <% end %>
+<% end %>
 
 
 <%= link_to "All Players", players_path %>
