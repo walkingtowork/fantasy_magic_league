@@ -43,9 +43,9 @@ def make_users
   end
 end
 # Sample Draft of World Championships
-competitors = ["Shahar Shenhar", "Reid Duke", "Ben Stark", "Josh Utter-Leyton", "Craig Wescoe", "Yuya Watanabe", "Brian Kibler", "Shuhei Nakamura", "Dmitriy Butakov", "David Ochoa", "Stanislav Cifka", "Tom Martell", "Willy Edel", "Eric Froehlich", "Lee Shi Tian", "Martin Juza"]
+@competitors = ["Shahar Shenhar", "Reid Duke", "Ben Stark", "Josh Utter-Leyton", "Craig Wescoe", "Yuya Watanabe", "Brian Kibler", "Shuhei Nakamura", "Dmitriy Butakov", "David Ochoa", "Stanislav Cifka", "Tom Martell", "Willy Edel", "Eric Froehlich", "Lee Shi Tian", "Martin Juza"]
 def draft_players
-  competitors.each_with_index do |competitor, index|
+  @competitors.each_with_index do |competitor, index|
     if index < @users.length
       draft_pick = Player.find_by_full_name(competitor)
       user = @test.users.where("username = ? ", @users[index]).first
