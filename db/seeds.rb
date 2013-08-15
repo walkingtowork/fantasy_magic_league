@@ -18,6 +18,7 @@ def make_players(website)
     p = Player.create(
       :first_name => player_first,
       :last_name => player_last,
+      :full_name => "#{player_first} #{player_last}",
       :nationality => player_nat,
       :pro_club_level => player_level
       )
