@@ -3,23 +3,7 @@ Player.delete_all
 User.delete_all
 League.delete_all
 
-@sfmagic = League.create(
-  :name => "San Francisco Magic"
-  )
-
-def make_users
-  users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
-
-  users.each do |user|
-    User.create(
-      :username => user,
-      :email => "#{user}@#{user}.com",
-      :password => "password",
-      :password_confirmation => "password"
-      )
-  end
-end
-
+# Building list of Players
 def make_players(website)
   player_scrape = Nokogiri::HTML(open(website))
 
@@ -40,6 +24,49 @@ def make_players(website)
   end
 end
 
+# Creating Sample Data
+# Sample League
+@test = League.create(
+  :name => "Sample League"
+  )
+# Sample Users
+@users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
+def make_users
+  users.each do |user|
+    User.create(
+      :username => user,
+      :email => "#{user}@#{user}.com",
+      :password => "password",
+      :password_confirmation => "password"
+      )
+    @test.users << user
+  end
+end
+# Sample Draft of World Championships
+competitors = ["Shahar Shenhar", "Reid Duke", "Ben Stark", "Josh Utter-Leyton", "Craig Wescoe", "Yuya Watanabe", "Brian Kibler", "Shuhei Nakamura", "Dmitriy Butakov", "David Ochoa", "Stanislav Cifka", "Tom Martell", "Willy Edel", "Eric Froehlich", "Lee Shi Tian", "Martin Juza"]
+def draft_players
+  competitors.each_with_index do |competitor, index|
+    if index < @users.length
+      draft_pick = Player.find_by_full_name(competitor)
+      binding.pry
+      user = @test.users.where("username = ? ", @users[index]).first
+      if draft_pick != nil
+        user.players << draft_pick
+      end
+    else
+      draft_pick = Player.find_by_full_name(competitor)
+      user = @test.users.where("username = ? ", @users[index - @users.length]).first
+      if draft_pick != nil
+        user.players << draft_pick
+      end
+    end
+  end
+end
+
+
+# Running the functions defined above
 make_players('http://www.wizards.com/magic/tcg/events.aspx?x=protour/standings/proplayersclub1213')
 
 make_users
+
+draft_players
