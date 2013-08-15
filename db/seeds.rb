@@ -33,13 +33,13 @@ end
 @users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
 def make_users
   @users.each do |user|
-    User.create(
+    new_user = User.create(
       :username => user,
       :email => "#{user}@#{user}.com",
       :password => "password",
       :password_confirmation => "password"
       )
-    @test.users << user
+    @test.users << new_user
   end
 end
 # Sample Draft of World Championships
