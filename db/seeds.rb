@@ -27,7 +27,8 @@ end
 # Creating Sample Data
 # Sample League
 @test = League.create(
-  :name => "Sample League"
+  :name => "Sample League",
+  :admin_id => 1
   )
 # Sample Users
 @users = ["alex", "erek", "brent", "stephen", "arthur", "joel", "brian", "tom"]
